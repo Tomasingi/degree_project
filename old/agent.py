@@ -49,9 +49,9 @@ class Net(nn.Module):
 class Agent:
     def __init__(self):
         self.D = MiniAllocationData()
-        self.n_doctors = len(self.D.doctors)
-        # self.n_doctors = 3
-        self.n_slots = 5
+        # self.n_doctors = len(self.D.doctors)
+        self.n_doctors = 2
+        self.n_slots = 2
         self.n_days = 5
 
         self.reset_state()
@@ -194,8 +194,6 @@ class AverageHeuristicAgent(Agent):
         temp = torch.argmax(action_scores[mask])
         index = torch.arange(len(action_scores))[mask][temp]
         return index
-
-    p = np.random.rand()
 
 class DeepQAgent(Agent):
     def __init__(self, epsilon_init, epsilon_final, tau=0.005):
